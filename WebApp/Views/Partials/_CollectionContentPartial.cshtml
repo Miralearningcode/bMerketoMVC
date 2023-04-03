@@ -1,0 +1,59 @@
+﻿@model CollectionContentViewModel
+
+
+
+@if (Model != null)
+{
+    <section class="up-to-sell">
+        <div class="container">
+            <div class="collection-grid">
+
+                @if (Model.GridItems != null)
+                {
+                    <div class="grid">
+                        @foreach (var item in Model.GridItems)
+                        {
+                            <partial name="/Views/Partials/_GridCollectionItemPartial.cshtml" model="item" />
+                        }
+                    </div>
+                }
+
+                <div class="discover">
+                    @if (Model.Item != null)
+                    {
+                        <div class="collection-content">
+                            @foreach (var item in Model.Item)
+                            {
+                                <partial name="/Views/Partials/_CollectionContentItemPartial.cshtml" model="item" />
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="collection-content">
+                    <div class="container">
+                        <div class="title-red">Hej</div>
+                        <div class="title">då</div>
+                        <div class="ingress">jaja</div>
+                        <div class="text">oki</div>
+                        <a href="#" class="link">bla</a>
+                    </div>
+                </div>
+                @if (Model.GridItems != null)
+                {
+                    <div class="grid">
+                        @foreach (var item in Model.GridItems)
+                        {
+                            <partial name="/Views/Partials/_GridCollectionItemPartial.cshtml" model="item" />
+                        }
+                    </div>
+                }
+
+
+                
+            </div>
+        </div>
+    </section>
+}
+
+
