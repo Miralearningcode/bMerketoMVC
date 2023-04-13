@@ -18,17 +18,6 @@
                     </div>
                 }
 
-                <div class="discover">
-                    @if (Model.Item != null)
-                    {
-                        <div class="collection-content">
-                            @foreach (var item in Model.Item)
-                            {
-                                <partial name="/Views/Partials/_CollectionContentItemPartial.cshtml" model="item" />
-                            }
-                        </div>
-                    }
-                </div>
 
                 <div class="collection-content">
                     <div class="container">
