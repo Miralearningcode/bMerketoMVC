@@ -18,8 +18,11 @@ namespace WebApp.ViewModels
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; } = null!;
 
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Phone Number (optional)")]
         public string? PhoneNumber { get; set; }
+
+        [Display(Name = "Company (optional)")]
+        public string? Company{ get; set; }
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password is required.")]
@@ -33,13 +36,16 @@ namespace WebApp.ViewModels
         public string ConfirmPassword { get; set; } = null!;
 
         [Display(Name = "Street Name")]
-        public string? StreetName { get; set; }
+        [Required(ErrorMessage = "Street name is required.")]
+        public string StreetName { get; set; } = null!;
 
         [Display(Name = "Postal Code")]
-        public string? PostalCode { get; set; }
+        [Required(ErrorMessage = "Postal code is required.")]
+        public string PostalCode { get; set; } = null!;
 
         [Display(Name = "City")]
-        public string? City { get; set; }
+        [Required(ErrorMessage = "City is required.")]
+        public string City { get; set; } = null!;
 
 
 

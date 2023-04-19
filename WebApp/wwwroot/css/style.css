@@ -305,6 +305,10 @@ input:not([type=checkbox]):focus {
   align-items: center;
 }
 
+.loginform {
+  padding-top: 150px;
+}
+
 header {
   position: fixed;
   width: 100%;
@@ -922,6 +926,72 @@ footer .container {
 }
 @media (min-width: 992px) {
   .contact-form form button {
+    display: flex;
+    justify-self: flex-start;
+  }
+}
+
+.register-form {
+  padding: 20px 0 60px 0;
+}
+@media (min-width: 992px) {
+  .register-form {
+    padding: 60px 0;
+  }
+}
+.register-form .container {
+  border: 0px solid #E1E1E1;
+  padding: 30px;
+}
+@media (min-width: 768px) {
+  .register-form .container {
+    border: 1px solid #E1E1E1;
+  }
+}
+.register-form .title {
+  margin-bottom: 40px;
+}
+.register-form form {
+  display: grid;
+  column-gap: 30px;
+  row-gap: 30px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "name" "email" "phoneNumber" "companyName" "message" "terms" "button";
+}
+@media (min-width: 992px) {
+  .register-form form {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name email" "phoneNumber companyName" "message message" "terms terms" "button button";
+  }
+}
+.register-form form .name {
+  grid-area: name;
+}
+.register-form form .email {
+  grid-area: email;
+}
+.register-form form .phoneNumber {
+  grid-area: phoneNumber;
+}
+.register-form form .companyName {
+  grid-area: companyName;
+}
+.register-form form .terms {
+  grid-area: terms;
+  margin: 10px 0;
+}
+.register-form form .message {
+  grid-area: message;
+}
+.register-form form textarea {
+  height: 100px;
+  resize: none;
+}
+.register-form form button {
+  grid-area: button;
+}
+@media (min-width: 992px) {
+  .register-form form button {
     display: flex;
     justify-self: flex-start;
   }

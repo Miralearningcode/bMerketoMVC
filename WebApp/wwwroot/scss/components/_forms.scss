@@ -15,7 +15,7 @@ input:not([type="checkbox"]) {
 }
 
 .invalid {
-    border: 1px solid $color-theme-1 !important;
+    border: 1px solid $color-theme-1 !important; //ta bort denna?
 } 
 
 .custom-checkbox {
@@ -83,4 +83,9 @@ input:not([type="checkbox"]) {
     justify-content: flex-start;
     align-items: center;
 
+}
+
+.loginform 
+{
+    padding-top: 150px;
 }

@@ -1,63 +1,84 @@
 ﻿@model UserRegistrationViewModel
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-center">
+<section class="register-form">
+    <div class="container">
+        <div class="title">Please Register Your new Account</div>
 
-        <form method="post" class="col-10 col-xl-6">
+        <form method="post" novalidate>
 
-            <div asp-validation-summary="ModelOnly"></div>
+	    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="mb-3">
-                <label asp-for="FirstName" class="form-label"></label>
-                <input asp-for="FirstName" class="form-control"/>
+            <div class="name form-group">
+                <label asp-for="FirstName" class="form-label" label for="name"></label>
+                <input asp-for="FirstName" class="form-control" input id="name" type="text" class="invalid" required />
                 <small class="text-danger"><span asp-validation-for="FirstName"></span></small>
             </div>
-            <div class="mb-3">
-                <label asp-for="LastName" class="form-label"></label>
-                <input asp-for="LastName" class="form-control" />
+
+            <div class="lastname form-group">
+                <label asp-for="LastName" class="form-label" label for="lastname"></label>
+                <input asp-for="LastName" class="form-control" input id="lastname" type="text" class="invalid" required />
                 <small class="text-danger"><span asp-validation-for="LastName"></span></small>
             </div>
-            <div class="mb-3">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <small class="text-danger"><span asp-validation-for="Email"></span></small>
-            </div>
-            <div class="mb-3">
-                <label asp-for="PhoneNumber" class="form-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <small class="text-danger"><span asp-validation-for="PhoneNumber"></span></small>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Password" class="form-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <small class="text-danger"><span asp-validation-for="Password"></span></small>
-            </div>
-            <div class="mb-3">
-                <label asp-for="ConfirmPassword" class="form-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <small class="text-danger"><span asp-validation-for="ConfirmPassword"></span></small>
-            </div>
-            <div class="mb-3">
-                <label asp-for="StreetName" class="form-label"></label>
-                <input asp-for="StreetName" class="form-control" />
+
+            <div class="streetname form-group">
+                <label asp-for="StreetName" class="form-label" label for="streetname"></label>
+                <input asp-for="StreetName" class="form-control" input id="streetname" type="text" class="invalid" required />
                 <small class="text-danger"><span asp-validation-for="StreetName"></span></small>
             </div>
-            <div class="mb-3">
-                <label asp-for="PostalCode" class="form-label"></label>
-                <input asp-for="PostalCode" class="form-control" />
+
+            <div class="postalcode form-group">
+                <label asp-for="PostalCode" class="form-label" label for="postalcode"></label>
+                <input asp-for="PostalCode" class="form-control" input id="postalcode" type="text" class="invalid" required />
                 <small class="text-danger"><span asp-validation-for="PostalCode"></span></small>
             </div>
-            <div class="mb-3">
-                <label asp-for="City" class="form-label"></label>
-                <input asp-for="City" class="form-control" />
+
+            <div class="city form-group">
+                <label asp-for="City" class="form-label" label for="city"></label>
+                <input asp-for="City" class="form-control" input id="city" type="text" class="invalid" required />
                 <small class="text-danger"><span asp-validation-for="City"></span></small>
             </div>
-            <div class="mt-3">
-                <div class="d-grid">
-                    <button class="btn-theme">REGISTER</button>
-                </div>
-            </div>
-        </form>
 
+            <div class="phonenumber form-group">
+                <label asp-for="PhoneNumber" class="form-label" label for="phonenumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" input id="phonenumber" type="text" class="invalid" required />
+                <small class="text-danger"><span asp-validation-for="PhoneNumber"></span></small>
+            </div>
+
+            <div class="company form-group">
+                <label asp-for="Company" class="form-label" label for="company"></label>
+                <input asp-for="Company" class="form-control" input id="company" type="text" class="invalid" required />
+                <small class="text-danger"><span asp-validation-for="Company"></span></small>
+            </div>
+
+            <div class="email form-group">
+                <label asp-for="Email" class="form-label" label for="email"></label>
+                <input asp-for="Email" class="form-control" input id="email" type="text" class="invalid" required />
+                <small class="text-danger"><span asp-validation-for="Email"></span></small>
+            </div>
+
+            <div class="password form-group">
+                <label asp-for="Password" class="form-label" label for="password"></label>
+                <input asp-for="Password" class="form-control" input id="password" type="password" required />
+                <small class="text-danger"><span asp-validation-for="Password"></span></small>
+            </div>
+
+            <div class="confirmpassword form-group">
+                <label asp-for="ConfirmPassword" class="form-label" label for="confirmpassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control" input id="confirmpassword" type="password" required />
+                <small class="text-danger"><span asp-validation-for="ConfirmPassword"></span></small>
+            </div>
+
+            <div>
+                <div class="terms form-checkbox-group">
+                    <label class="custom-checkbox">
+                        I have read and accept the terms and agreements
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button class="btn-theme">Submit</button>
+            </div>
+            
+        </form>
     </div>
-</div>
+</section>
