@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using WebApp.Models.Identity;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -8,33 +6,28 @@ namespace WebApp.Controllers
 {
     public class RegisterController : Controller
     {
-        private readonly UserManager<CustomIdentityUser> _userManager;
+        private readonly AuthenticationService _auth;
 
-        public RegisterController(UserManager<CustomIdentityUser> userManager)
+        public RegisterController(AuthenticationService auth)
         {
-            _userManager = userManager;
+            _auth = auth;
         }
 
-        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> Index(UserRegistrationViewModel viewModel)
+        public async Task<IActionResult> Index(UserRegisterViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
-                if (await _userManager.FindByNameAsync(viewModel.Email) == null)
-                {
-                    var result = await _userManager.CreateAsync(viewModel, viewModel.Password);
-                    if (result.Succeeded)
-                        return RedirectToAction("Index", "Login");
-                }
+                if (await _auth.UserAlreadyExistsAsync(x => x.Email == viewModel.Email))
+                    ModelState.AddModelError("", "An account with the same email address already exist");
 
-                ModelState.AddModelError("", "A user with the same e-mail address already exist");
+                if(await _auth.RegisterUserAsync(viewModel))
+                    return RedirectToAction("index","login");
             }
 
             return View(viewModel);
