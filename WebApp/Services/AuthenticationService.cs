@@ -10,12 +10,14 @@ namespace WebApp.Services
     {
 
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly AddressService _addressService;
 
-        public AuthenticationService(UserManager<AppUser> userManager, AddressService addressService)
+        public AuthenticationService(UserManager<AppUser> userManager, AddressService addressService, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _addressService = addressService;
+            _signInManager = signInManager;
         }
 
         public async Task<bool> UserAlreadyExistsAsync(Expression<Func<AppUser, bool>> expression)
@@ -36,6 +38,19 @@ namespace WebApp.Services
                     await _addressService.AddAddressAsync(appUser, addressEntity);
                     return true;
                 }
+            }
+
+            return false;
+        }
+
+
+        public async Task<bool> LoginAsync(UserLoginViewModel viewModel)
+        {
+            var AppUser = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == viewModel.Email);
+            if (AppUser != null)
+            {
+                var result = await _signInManager.PasswordSignInAsync(AppUser, viewModel.Password, viewModel.RememberMe, false);
+                return result.Succeeded;
             }
 
             return false;

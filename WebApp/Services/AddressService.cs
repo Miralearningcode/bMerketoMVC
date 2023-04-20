@@ -1,5 +1,6 @@
 ﻿using WebApp.Models.Entities;
 using WebApp.Models.Identity;
+using WebApp.Repositiories;
 
 namespace WebApp.Services
 {
@@ -9,22 +10,20 @@ namespace WebApp.Services
         private readonly AddressRepository _addressRepo;
         private readonly UserAddressRepository _userAddressRepository;
 
-        public AddressService(AddressRepository addressRepo)
+        public AddressService(AddressRepository addressRepo, UserAddressRepository userAddressRepository)
         {
             _addressRepo = addressRepo;
-        }
-
-        public AddressService(UserAddressRepository userAddressRepository)
-        {
             _userAddressRepository = userAddressRepository;
         }
+
+        
 
         public async Task<AddressEntity> GetOrCreateAsync(AddressEntity addressEntity)
         {
             var entity = await _addressRepo.GetAsync(x =>
-                x.StreetName == address.StreetName &&
-                x.PostalCode == address.PostalCode &&
-                x.City == address.City  
+                x.StreetName == addressEntity.StreetName &&
+                x.PostalCode == addressEntity.PostalCode &&
+                x.City == addressEntity.City  
             );
 
             entity ??= await _addressRepo.AddAsync(addressEntity);

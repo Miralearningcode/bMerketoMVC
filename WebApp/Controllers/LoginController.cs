@@ -1,24 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Services;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Index()
+        private readonly AuthenticationService _auth;
+
+        public LoginController(AuthenticationService auth)
         {
-            return View();
+            _auth = auth;
+        }
+
+        public IActionResult Index(string ReturnUrl = null!)
+        {
+            var viewModel = new UserLoginViewModel();
+            if (ReturnUrl != null) 
+                viewModel.ReturnUrl = ReturnUrl;
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Index(UserLoginViewModel viewModel)
+        public async Task<IActionResult> Index(UserLoginViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                return View();
+                if (await _auth.LoginAsync(viewModel))
+                    return LocalRedirect(viewModel.ReturnUrl);
+
+                ModelState.AddModelError("", "Incorrect email or password");
             }
 
-            ModelState.AddModelError("", "Incorrect email or password");
             return View(viewModel);
         }
     }

@@ -19,5 +19,7 @@ namespace WebApp.ViewModels
 
         [Display(Name = "Keep me signed in")]
         public bool RememberMe { get; set; } = false!;
+
+        public string ReturnUrl { get; set; } = "/";
     }
 }
