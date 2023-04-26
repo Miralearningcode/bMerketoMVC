@@ -12,8 +12,8 @@ using WebApp.Contexts;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230419093117_Identity")]
-    partial class Identity
+    [Migration("20230424075925_Init Database")]
+    partial class InitDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
