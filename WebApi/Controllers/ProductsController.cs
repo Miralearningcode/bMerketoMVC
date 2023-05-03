@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using WebApi.Helpers.Repositories;
 using WebApi.Helpers.Services;
 using WebApi.Models.Schemas;
 
@@ -9,14 +11,17 @@ namespace WebApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ProductService _productService;
+        private readonly ProductRepo _productRepo;
 
-        public ProductsController(ProductService productService)
+        public ProductsController(ProductService productService, ProductRepo productRepo)
         {
             _productService = productService;
+            _productRepo = productRepo;
         }
 
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(ProductSchema schema)
         {
             if (ModelState.IsValid)
@@ -29,7 +34,31 @@ namespace WebApi.Controllers
                 if (product != null)
                     return Created("", product);
             }
+
             return BadRequest(schema);
+        }
+
+        [HttpGet("{articleNumber}")]
+        public async Task <IActionResult> Get(ProductSchema schema)
+        {
+            if (string.IsNullOrEmpty(schema.ArticleNumber))
+                return BadRequest();
+
+            var entity = await _productService.GetProductAsync(schema.ArticleNumber);
+            if (entity != null)
+                return Ok(entity);
+
+            return NotFound();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll(string articleNumber)
+        {
+            var entities = await _productService.GetProductAsync(articleNumber);
+            if (entities != null)
+                return Ok(entities);
+
+            return NotFound();
         }
     }
 }

@@ -5,6 +5,7 @@ using WebApi.Contexts;
 
 namespace WebApi.Helpers.Repositories
 {
+    //CRUD - CREATE,READ,UPDATE,DELETE
     public abstract class Repo<TEntity> where TEntity : class
     {
         private readonly DataContext _context;
@@ -14,7 +15,7 @@ namespace WebApi.Helpers.Repositories
             _context = context;
         }
 
-
+        //Virtual = Överskrivningsbar
         public virtual async Task<TEntity> AddAsync(TEntity entity) 
         {
             _context.Set<TEntity>().Add(entity);
