@@ -1,0 +1,40 @@
+﻿@model ProductRegistrationViewModel;
+
+@{
+    ViewData["Title"] = "Product registration";
+}
+
+<section class="register-product-form">
+    <div class="container">
+        <form method="post" asp-action"Index" novalidate> 
+            <div asp-validation-summary="ModelOnly" class="form-group error"></div>
+
+            <div class="articlenumber form-group">
+                <label asp-for="ArticleNumber">Article Number</label>
+                <input asp-for="ArticleNumber">
+                <span asp-validation-for="ArticleNumber" class="error"></span>
+            </div>
+
+            <div class="name form-group">
+                <label asp-for="Name">Product Name</label>
+                <input asp-for="Name">
+                <span asp-validation-for="Name" class="error"></span>
+            </div>
+            
+            <div>
+                @foreach (SelectListItem tag in ViewBag.Tags)
+                {
+                    <div>
+                        <input type="checkbox" name="Tags" id="tag-@tag.Text-@tag.Value" value="@tag.Value" checked="@tag.Selected" class="form-check-input" />
+                        <label for="tag-@tag.Text-@tag.Value" class="small form-check-label">@tag.Text</label>
+                    </div>
+                }
+            </div>
+
+            <div>
+                <button class="btn-theme">Register product</button>
+            </div>
+ 
+        </form>
+    </div>
+</section>

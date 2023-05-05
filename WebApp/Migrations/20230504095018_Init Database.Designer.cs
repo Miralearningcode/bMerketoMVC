@@ -12,7 +12,7 @@ using WebApp.Contexts;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230424075925_Init Database")]
+    [Migration("20230504095018_Init Database")]
     partial class InitDatabase
     {
         /// <inheritdoc />
@@ -183,6 +183,52 @@ namespace WebApp.Migrations
                     b.ToTable("AspNetAddresses");
                 });
 
+            modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
+                {
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArticleNumber");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ProductTagEntity", b =>
+                {
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArticleNumber", "TagId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ProductTags");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.TagEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TagName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("WebApp.Models.Entities.UserAddressEntity", b =>
                 {
                     b.Property<string>("UserId")
@@ -328,6 +374,25 @@ namespace WebApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebApp.Models.Entities.ProductTagEntity", b =>
+                {
+                    b.HasOne("WebApp.Models.Entities.ProductEntity", "Product")
+                        .WithMany("ProductTags")
+                        .HasForeignKey("ArticleNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApp.Models.Entities.TagEntity", "Tag")
+                        .WithMany("ProductTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Tag");
+                });
+
             modelBuilder.Entity("WebApp.Models.Entities.UserAddressEntity", b =>
                 {
                     b.HasOne("WebApp.Models.Entities.AddressEntity", "Address")
@@ -350,6 +415,16 @@ namespace WebApp.Migrations
             modelBuilder.Entity("WebApp.Models.Entities.AddressEntity", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
+                {
+                    b.Navigation("ProductTags");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.TagEntity", b =>
+                {
+                    b.Navigation("ProductTags");
                 });
 
             modelBuilder.Entity("WebApp.Models.Identity.AppUser", b =>

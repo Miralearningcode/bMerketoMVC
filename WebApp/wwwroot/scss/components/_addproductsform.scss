@@ -1,0 +1,26 @@
+.register-product-form {
+    padding: 20px 0 60px 0;
+
+
+    @include lg {
+        padding: 60px 0;
+    }
+
+    .container {
+        border: 0px solid $color-dark-5;
+        padding: 30px;
+        margin-top: 150px;
+
+ 
+
+        button {
+            grid-area: button;
+            margin-top: 50px;
+
+            @include lg {
+                display: flex;
+                justify-self: flex-start;
+            }
+        }
+    }
+}

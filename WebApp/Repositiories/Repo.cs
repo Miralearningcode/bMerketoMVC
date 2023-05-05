@@ -1,21 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using WebApi.Contexts;
+using WebApp.Contexts;
 
-namespace WebApi.Helpers.Repositories
+namespace WebApp.Repositiories
 {
     //CRUD - CREATE,READ,UPDATE,DELETE
     public abstract class Repo<TEntity> where TEntity : class
     {
-        private readonly DataContext _context;
+        private readonly IdentityContext _context;
 
-        protected Repo(DataContext context)
+        protected Repo(IdentityContext context)
         {
             _context = context;
         }
 
         //Virtual = Överskrivningsbar
-        public virtual async Task<TEntity> AddAsync(TEntity entity) 
+        public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);
             await _context.SaveChangesAsync();
@@ -28,7 +28,8 @@ namespace WebApi.Helpers.Repositories
             {
                 var item = await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
                 return item!;
-            } catch { return null!; }
+            }
+            catch { return null!; }
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
@@ -43,11 +44,12 @@ namespace WebApi.Helpers.Repositories
 
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
         {
-            try 
+            try
             {
                 var items = await _context.Set<TEntity>().Where(expression).ToListAsync();
                 return items!;
-            } catch { return null!; }
+            }
+            catch { return null!; }
         }
 
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
@@ -57,17 +59,19 @@ namespace WebApi.Helpers.Repositories
                 _context.Set<TEntity>().Update(entity);
                 await _context.SaveChangesAsync();
                 return entity;
-            } catch { return null!; }
+            }
+            catch { return null!; }
         }
 
         public virtual async Task<bool> DeleteAsync(TEntity entity)
         {
-            try 
+            try
             {
                 _context.Set<TEntity>().Remove(entity);
                 await _context.SaveChangesAsync();
                 return true;
-            } catch { return false; }
+            }
+            catch { return false; }
         }
     }
 }

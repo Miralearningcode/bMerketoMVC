@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApi.Models.Entities;
 
+
 [PrimaryKey(nameof(ArticleNumber), nameof(TagId))]
 public class ProductTagEntity
 {

@@ -31,5 +31,21 @@ namespace WebApi.Controllers
 
             return BadRequest();
         }
+
+        [HttpPost("SignIn")]
+        public async Task<IActionResult> SignIn(SignInSchema schema)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(schema.Email, schema.Password, schema.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    return Ok(result);
+                }
+                    
+            }
+
+            return BadRequest();
+        }
     }
 }

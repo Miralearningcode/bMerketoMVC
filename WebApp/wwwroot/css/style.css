@@ -1000,7 +1000,6 @@ footer .container {
 
 .register-form {
   padding: 20px 0 60px 0;
-  margin-top: 150px;
 }
 @media (min-width: 992px) {
   .register-form {
@@ -1010,6 +1009,7 @@ footer .container {
 .register-form .container {
   border: 0px solid #E1E1E1;
   padding: 30px;
+  margin-top: 150px;
 }
 @media (min-width: 768px) {
   .register-form .container {
@@ -1074,6 +1074,30 @@ footer .container {
 }
 @media (min-width: 992px) {
   .register-form form button {
+    display: flex;
+    justify-self: flex-start;
+  }
+}
+
+.register-product-form {
+  padding: 20px 0 60px 0;
+}
+@media (min-width: 992px) {
+  .register-product-form {
+    padding: 60px 0;
+  }
+}
+.register-product-form .container {
+  border: 0px solid #E1E1E1;
+  padding: 30px;
+  margin-top: 150px;
+}
+.register-product-form .container button {
+  grid-area: button;
+  margin-top: 50px;
+}
+@media (min-width: 992px) {
+  .register-product-form .container button {
     display: flex;
     justify-self: flex-start;
   }

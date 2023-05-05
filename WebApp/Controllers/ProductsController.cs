@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Services;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers
@@ -12,7 +13,7 @@ namespace WebApp.Controllers
                 All = new GridCollectionViewModel
                 {
                     Title = "All Products",
-                    Categories = new List<string> { "All", "Mobile", "Computers"}
+                    Categories = new List<string> { "New", "Featured", "Popular" }
                 }
             };
             return View(viewModel);

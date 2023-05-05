@@ -52,6 +52,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll(string articleNumber)
         {
             var entities = await _productService.GetProductAsync(articleNumber);
