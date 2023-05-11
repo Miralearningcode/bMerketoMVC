@@ -6,7 +6,7 @@
 
 <section class="register-product-form">
     <div class="container">
-        <form method="post" asp-action"Index" novalidate> 
+        <form enctype="multipart/form-data" method="post" asp-action"Index" novalidate> 
             <div asp-validation-summary="ModelOnly" class="form-group error"></div>
 
             <div class="articlenumber form-group">
@@ -21,6 +21,12 @@
                 <span asp-validation-for="Name" class="error"></span>
             </div>
             
+            <div class="image form-group">
+                <label asp-for="Image">Upload Image</label>
+                <input asp-for="Image">
+                <span asp-validation-for="Image" class="error"></span>
+            </div>
+
             <div>
                 @foreach (SelectListItem tag in ViewBag.Tags)
                 {

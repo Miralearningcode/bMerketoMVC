@@ -7,12 +7,16 @@ namespace WebApp.Repositiories
     //CRUD - CREATE,READ,UPDATE,DELETE
     public abstract class Repo<TEntity> where TEntity : class
     {
+        #region Constructors & Private Fields
+
         private readonly IdentityContext _context;
 
         protected Repo(IdentityContext context)
         {
             _context = context;
         }
+
+        #endregion
 
         //Virtual = Överskrivningsbar
         public virtual async Task<TEntity> AddAsync(TEntity entity)

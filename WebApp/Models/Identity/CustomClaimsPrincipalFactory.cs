@@ -17,7 +17,15 @@ namespace WebApp.Models.Identity
         {
             var claimsIdentity = await base.GenerateClaimsAsync(user);
 
+            // Add custom DisplayName claim
             claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"));
+
+            // Add custom Role claim
+            var roles = await userManager.GetRolesAsync(user);
+            foreach (var role in roles)
+            {
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role));
+            }
 
             return claimsIdentity;
         }

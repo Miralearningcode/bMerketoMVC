@@ -33,10 +33,15 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _productService.CreateAsync(viewModel))
+                var product = await _productService.CreateAsync(viewModel);
+                if (product != null)
                 {
-                    await _productService.AddProductTagsAsync(viewModel, tags);
-                    return RedirectToAction("Index");
+                    if (viewModel.Image != null)
+                    {
+                        await _productService.AddProductTagsAsync(viewModel, tags);
+                        await _productService.UploadImageAsync(product, viewModel.Image!); 
+                        return RedirectToAction("Index");
+                    }
                 }
 
                 ModelState.AddModelError("", "Something went wrong.");

@@ -185,7 +185,10 @@ namespace WebApp.Migrations
                     b.Property<string>("ArticleNumber")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProductName")
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

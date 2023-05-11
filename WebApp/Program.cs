@@ -15,6 +15,9 @@ builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddScoped<TagService>();
 builder.Services.AddScoped<ProductService>();
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
 //Contexts
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("merketo")));
 
@@ -53,6 +56,7 @@ app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthorization();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
