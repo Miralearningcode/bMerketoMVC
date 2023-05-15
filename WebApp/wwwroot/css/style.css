@@ -1102,3 +1102,8 @@ footer .container {
     justify-self: flex-start;
   }
 }
+
+.access-denied {
+  padding-top: 150px;
+  color: #FA3150;
+}

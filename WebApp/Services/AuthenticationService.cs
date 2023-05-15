@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using WebApp.Models.Identity;
 using WebApp.ViewModels;
 
@@ -32,14 +36,14 @@ namespace WebApp.Services
             AppUser appUser = viewModel;
             var roleName = "user";
 
-            if(!await _roleManager.Roles.AnyAsync())
+            if (!await _roleManager.Roles.AnyAsync())
             {
                 await _roleManager.CreateAsync(new IdentityRole("admin"));
                 await _roleManager.CreateAsync(new IdentityRole("user"));
             }
 
             if (!await _userManager.Users.AnyAsync())
-                roleName = "admin";    
+                roleName = "admin";
 
             var result = await _userManager.CreateAsync(appUser, viewModel.Password);
             if (result.Succeeded)
@@ -48,7 +52,7 @@ namespace WebApp.Services
 
 
                 var addressEntity = await _addressService.GetOrCreateAsync(viewModel);
-                if (addressEntity != null) 
+                if (addressEntity != null)
                 {
                     await _addressService.AddAddressAsync(appUser, addressEntity);
                     return true;
@@ -69,6 +73,31 @@ namespace WebApp.Services
             }
 
             return false;
+        }
+
+        private async Task<UserRolesViewModel> GenerateUserRolesViewModel(AppUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            return new UserRolesViewModel
+            {
+                UserId = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email!,
+                Roles = roles.ToList()
+            };
+        }
+
+        public async Task<List<UserRolesViewModel>> GetAllUsersWithRolesAsync()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            var userRolesViewModels = new List<UserRolesViewModel>();
+            foreach (var user in users)
+            {
+                var userRolesViewModel = await GenerateUserRolesViewModel(user);
+                userRolesViewModels.Add(userRolesViewModel);
+            }
+            return userRolesViewModels;
         }
     }
 }

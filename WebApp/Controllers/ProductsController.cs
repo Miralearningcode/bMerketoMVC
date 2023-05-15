@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Contexts;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -9,10 +10,12 @@ namespace WebApp.Controllers
         #region constructors & private fields
 
         private readonly ProductService _productService;
+        private readonly IdentityContext _identityContext;
 
-        public ProductsController(ProductService productService)
+        public ProductsController(ProductService productService, IdentityContext identityContext)
         {
             _productService = productService;
+            _identityContext = identityContext;
         }
 
         #endregion
@@ -22,7 +25,16 @@ namespace WebApp.Controllers
 
             var viewModel = new ProductsIndexViewModel
             {
-                Products = products
+                All = new GridCollectionViewModel
+                {
+                    LoadMore = false,
+                    GridItems = _identityContext.Products.Select(i => new GridCollectionItemViewModel
+                    {
+                        ArticleNumber = i.ArticleNumber,
+                        Name = i.Name,
+                        ImageUrl = i.ImageUrl
+                    }).ToList()
+                }
             };
 
             return View(viewModel);
