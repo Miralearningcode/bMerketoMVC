@@ -32,6 +32,7 @@ namespace WebApp.Controllers
                     {
                         ArticleNumber = i.ArticleNumber,
                         Name = i.Name,
+                        Price = i.Price,
                         ImageUrl = i.ImageUrl
                     }).ToList()
                 }

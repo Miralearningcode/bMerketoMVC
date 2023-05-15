@@ -10,6 +10,8 @@ namespace WebApp.Models.Entities
         [Key]
         public string ArticleNumber { get; set; } = null!;
         public string Name { get; set; } = null!;
+        public string? Description { get; set; }
+        public int Price { get; set; }
         public string? ImageUrl { get; set; }
         
         public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
@@ -21,7 +23,10 @@ namespace WebApp.Models.Entities
             {
                 ArticleNumber = entity.ArticleNumber,
                 Name = entity.Name,
-                ImageUrl = entity.ImageUrl,
+                Description = entity.Description,
+                Price = entity.Price,
+                ImageUrl = entity.ImageUrl
+
             };
         }
 

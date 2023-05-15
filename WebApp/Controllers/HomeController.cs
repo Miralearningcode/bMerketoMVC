@@ -28,6 +28,7 @@ public class HomeController : Controller
                 {
                     ArticleNumber = i.ArticleNumber,
                     Name = i.Name,
+                    Price = i.Price,
                     ImageUrl = i.ImageUrl
                 }).ToList()
 
@@ -39,6 +40,7 @@ public class HomeController : Controller
                 {
                     ArticleNumber = i.ArticleNumber,
                     Name = i.Name,
+                    Price = i.Price,
                     ImageUrl = i.ImageUrl
                 }).ToList()
             },
@@ -58,6 +60,7 @@ public class HomeController : Controller
                 {
                     ArticleNumber = i.ArticleNumber,
                     Name = i.Name,
+                    Price = i.Price,
                     ImageUrl = i.ImageUrl
                 }).ToList()
 

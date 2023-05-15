@@ -7,7 +7,8 @@ namespace WebApp.ViewModels
     {
         public string ArticleNumber { get; set; } = null!;
         public string Name { get; set; } = null!;
-
+        public string? Description { get; set; }
+        public int Price { get; set; }
 
         [DataType(DataType.Upload)]
         public IFormFile? Image { get; set; }
@@ -19,7 +20,9 @@ namespace WebApp.ViewModels
             var entity = new ProductEntity
             {
                 ArticleNumber = viewModel.ArticleNumber,
-                Name = viewModel.Name
+                Name = viewModel.Name,
+                Description = viewModel.Description,
+                Price = viewModel.Price
             };
 
             if (viewModel.Image != null )

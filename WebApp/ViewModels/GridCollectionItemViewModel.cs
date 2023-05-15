@@ -6,7 +6,7 @@ namespace WebApp.ViewModels
     {
         public string ArticleNumber { get; set; } = null!;
         public string Name { get; set; } = null!;
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public string? ImageUrl { get; set; }
 
         //public string Id { get; set; } = null!;

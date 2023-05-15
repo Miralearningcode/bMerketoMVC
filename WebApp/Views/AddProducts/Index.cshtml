@@ -21,6 +21,18 @@
                 <span asp-validation-for="Name" class="error"></span>
             </div>
             
+            <div class="description form-group">
+                <label asp-for="Description">Description(optional)</label>
+                <input asp-for="Description">
+                <span asp-validation-for="Description" class="error"></span>
+            </div>
+
+            <div class="price form-group">
+                <label asp-for="Price">Price</label>
+                <input asp-for="Price">
+                <span asp-validation-for="Price" class="error"></span>
+            </div>
+
             <div class="image form-group">
                 <label asp-for="Image">Upload Image</label>
                 <input asp-for="Image">

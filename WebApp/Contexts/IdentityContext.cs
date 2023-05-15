@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models.Entities;
 using WebApp.Models.Identity;
@@ -17,18 +18,26 @@ namespace WebApp.Contexts
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<ProductTagEntity> ProductTags { get; set; }
 
-        /*
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<ProductEntity>()
+                .Property(p => p.Price)
+                .HasColumnType("money");
+
+            modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
+            {
+                entity.HasKey(login => new { login.LoginProvider, login.ProviderKey });
+            });
+
+            /*
             var roleId = Guid.NewGuid().ToString();
             var userId = Guid.NewGuid().ToString();
-            
 
-
-            builder.Entity<IdentityRole>().HasData(
-                new IdentityRole {
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
                     Id = roleId,
                     Name = "System Administrator",
                     NormalizedName = "SYSTEM ADMINISTRATOR"
@@ -37,7 +46,7 @@ namespace WebApp.Contexts
 
             var passwordHasher = new PasswordHasher<AppUser>();
 
-            builder.Entity<AppUser>().HasData(new AppUser
+            modelBuilder.Entity<AppUser>().HasData(new AppUser
             {
                 Id = userId,
                 FirstName = " ",
@@ -47,13 +56,12 @@ namespace WebApp.Contexts
                 PasswordHash = passwordHasher.HashPassword(null!, "Bytmig123!")
             });
 
-            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
                 RoleId = roleId,
                 UserId = userId,
             });
+            */
         }
-        */
     }
 }
- 
