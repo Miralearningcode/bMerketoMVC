@@ -12,7 +12,7 @@ using WebApp.Contexts;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230515092831_Init")]
+    [Migration("20230517072312_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -181,6 +181,56 @@ namespace WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AspNetAddresses");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ContactFormEntity", b =>
+                {
+                    b.Property<int>("ContactId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactId"));
+
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SaveInfo")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ContactId");
+
+                    b.ToTable("ContactForm");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.MessageEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("MessageText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Message");
                 });
 
             modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>

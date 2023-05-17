@@ -49,7 +49,7 @@ namespace WebApp.ViewModels
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "You must enter a password")]
-        //[RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=-*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$", ErrorMessage = "You must enter a valid password")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$", ErrorMessage = "You must enter a valid password")]
         public string Password { get; set; } = null!;
 
 
@@ -85,7 +85,6 @@ namespace WebApp.ViewModels
 
         public static implicit operator AddressEntity(UserRegisterViewModel viewModel) 
         {
-
             return new AddressEntity
             {
                 StreetName = viewModel.StreetName,
