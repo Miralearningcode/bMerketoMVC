@@ -67,5 +67,10 @@ namespace WebApp.Services
 
             return list;
         }
+
+        public async Task<Product> GetAsync(string id)
+        {
+            return await _productRepo.GetAsync(x => x.ArticleNumber == id);
+        }
     }
 }

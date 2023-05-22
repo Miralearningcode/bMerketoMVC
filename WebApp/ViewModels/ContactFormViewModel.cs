@@ -44,6 +44,7 @@ namespace WebApp.ViewModels
                 Email = viewModel.Email,
                 Phone = viewModel.Phone,
                 Company = viewModel.Company,
+                SaveInfo = viewModel.SaveInfo,
             };
         }
 

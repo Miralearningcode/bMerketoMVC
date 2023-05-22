@@ -7,5 +7,7 @@
         public RowCollectionViewModel TopSellingCollection { get; set; } = null!;
         public CollectionContentViewModel UpToSaleCollection { get; set; } = null!;
         public CollectionContentViewModel UpToSaleCard { get; set; } = null!;
+        public GridCollectionViewModel ThreeCollection { get; set; } = null!;
+
     }
 }

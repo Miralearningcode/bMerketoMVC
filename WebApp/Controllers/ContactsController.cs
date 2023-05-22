@@ -14,6 +14,7 @@ public class ContactsController : Controller
     {
         _context = context;
     }
+
     public IActionResult Index()
     {
         ViewData["Title"] = "Contact Us";
@@ -22,7 +23,7 @@ public class ContactsController : Controller
     }
 
     [HttpPost]
-    public IActionResult Submit(ContactFormViewModel viewModel)
+    public IActionResult Index(ContactFormViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
@@ -33,7 +34,8 @@ public class ContactsController : Controller
             _context.Message.Add(messageEntity);
             _context.SaveChanges();
 
-            return RedirectToAction("Success");
+            ModelState.Clear();
+            return View();
         }
 
    

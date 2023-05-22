@@ -491,6 +491,9 @@ footer .container {
   align-items: center;
 }
 .breadcrumb h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 30px;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -1106,4 +1109,9 @@ footer .container {
 .access-denied {
   padding-top: 150px;
   color: #FA3150;
+}
+
+.test {
+  color: deeppink;
+  background-color: deeppink;
 }

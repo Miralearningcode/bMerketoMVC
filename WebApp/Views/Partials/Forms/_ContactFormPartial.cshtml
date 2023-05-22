@@ -4,17 +4,19 @@
     <div class="container">
         <div class="title">Write something</div>
 
-        <form novalidate method="post" asp-action="Submit">
+        <form method="post" asp-action="Index" novalidate>
+            <div asp-validation-summary="ModelOnly" class="form-group error"></div>
+
             <div class="name form-group">
                 <label asp-for="Name">Your Name*</label>
                 <input asp-for="Name" type="text" class="invalid" required>
-                <span asp-validation-for="Name"class="error">Your name is required</span>
+                <span asp-validation-for="Name"class="error"></span>
             </div>
 
             <div class="email form-group">
                 <label asp-for="Email">Your Email*</label>
                 <input asp-for="Email" type="text" class="invalid" required>
-                <span asp-validation-for="Email" class="error">Your email is required</span>
+                <span asp-validation-for="Email" class="error"></span>
             </div>
 
             <div class="phoneNumber form-group">
@@ -30,7 +32,7 @@
             <div class="message form-group">
                 <label asp-for="MessageText">Message*</label>
                 <textarea asp-for="MessageText" class="invalid" required></textarea>
-                <span class="error">Message is required</span>
+                <span asp-validation-for="MessageText" class="error"></span>
             </div>
 
             <div class="terms form-checkbox-group">

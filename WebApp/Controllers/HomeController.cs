@@ -65,9 +65,21 @@ public class HomeController : Controller
                 }).ToList()
 
             },
-            
-            
-            
+
+            ThreeCollection = new GridCollectionViewModel
+            {
+                GridItems = _identityContext.Products.Take(4).Select(i => new GridCollectionItemViewModel
+                {
+                    ArticleNumber = i.ArticleNumber,
+                    Name = i.Name,
+                    Price = i.Price,
+                    ImageUrl = i.ImageUrl
+                }).ToList()
+
+            },
+
+
+
         };
     
 

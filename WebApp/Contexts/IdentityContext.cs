@@ -34,38 +34,6 @@ namespace WebApp.Contexts
             {
                 entity.HasKey(login => new { login.LoginProvider, login.ProviderKey });
             });
-
-            /*
-            var roleId = Guid.NewGuid().ToString();
-            var userId = Guid.NewGuid().ToString();
-
-            modelBuilder.Entity<IdentityRole>().HasData(
-                new IdentityRole
-                {
-                    Id = roleId,
-                    Name = "System Administrator",
-                    NormalizedName = "SYSTEM ADMINISTRATOR"
-                }
-            );
-
-            var passwordHasher = new PasswordHasher<AppUser>();
-
-            modelBuilder.Entity<AppUser>().HasData(new AppUser
-            {
-                Id = userId,
-                FirstName = " ",
-                LastName = " ",
-                UserName = "administrator@domain.com",
-                Email = "administrator@domain.com",
-                PasswordHash = passwordHasher.HashPassword(null!, "Bytmig123!")
-            });
-
-            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-            {
-                RoleId = roleId,
-                UserId = userId,
-            });
-            */
         }
     }
 }

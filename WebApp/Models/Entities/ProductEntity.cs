@@ -19,6 +19,11 @@ namespace WebApp.Models.Entities
 
         public static implicit operator Product(ProductEntity entity)
         {
+            if (entity == null)
+            {
+                return null; 
+            }
+
             return new Product
             {
                 ArticleNumber = entity.ArticleNumber,
@@ -26,9 +31,7 @@ namespace WebApp.Models.Entities
                 Description = entity.Description,
                 Price = entity.Price,
                 ImageUrl = entity.ImageUrl
-
             };
         }
-
     }
 }
