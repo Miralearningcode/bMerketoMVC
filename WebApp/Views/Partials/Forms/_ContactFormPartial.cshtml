@@ -1,5 +1,6 @@
 ﻿@model ContactFormViewModel
 
+
 <section class="contact-form">
     <div class="container">
         <div class="title">Write something</div>
@@ -9,14 +10,16 @@
 
             <div class="name form-group">
                 <label asp-for="Name">Your Name*</label>
-                <input asp-for="Name" type="text" class="invalid" required>
+                <input asp-for="Name" type="text" required>
                 <span asp-validation-for="Name"class="error"></span>
+                <span id="NameError" class="error"></span>
             </div>
 
             <div class="email form-group">
                 <label asp-for="Email">Your Email*</label>
-                <input asp-for="Email" type="text" class="invalid" required>
+                <input asp-for="Email" type="text" required>
                 <span asp-validation-for="Email" class="error"></span>
+                <span id="EmailError" class="error"></span>
             </div>
 
             <div class="phoneNumber form-group">
@@ -31,13 +34,13 @@
 
             <div class="message form-group">
                 <label asp-for="MessageText">Message*</label>
-                <textarea asp-for="MessageText" class="invalid" required></textarea>
+                <textarea asp-for="MessageText" required></textarea>
                 <span asp-validation-for="MessageText" class="error"></span>
+                <span id="MessageError" class="error"></span>
             </div>
 
             <div class="terms form-checkbox-group">
                 <label class="custom-checkbox">
-                    Save my name, email in the this browser for the next time I comment.
                     <label asp-for="SaveInfo"></label>
                     <input asp-for="SaveInfo">
                     <span class="checkmark"></span>

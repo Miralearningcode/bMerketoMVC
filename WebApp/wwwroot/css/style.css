@@ -868,6 +868,10 @@ footer .container {
   }
 }
 
+.invalid {
+  border-color: red;
+}
+
 .contact-form {
   padding: 20px 0 60px 0;
 }

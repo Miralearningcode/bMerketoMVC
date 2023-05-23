@@ -22,7 +22,7 @@ namespace WebApp.ViewModels
         public string? Phone { get; set; }
 
 
-        [Display(Name = "Comapny (optional)")]
+        [Display(Name = "Company (optional)")]
         public string? Company { get; set; }
 
 
