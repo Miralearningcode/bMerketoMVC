@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var nameError = document.getElementById("NameError");     
     var messageError = document.getElementById("MessageError");    
 
-    // Event listeners for input fields
+
     nameInput.addEventListener("input", validateName);
     emailInput.addEventListener("input", validateEmail);
     messageInput.addEventListener("input", validateMessage);

@@ -9,37 +9,41 @@
         <div class="title">@ViewData["Title"]</div>
 
         <form method="post" enctype="multipart/form-data" novalidate> 
-
             <div asp-validation-summary="ModelOnly" class="form-group error"></div>
 
             <div class="firstname form-group">
                 <label asp-for="FirstName"></label>
-                <input asp-for="FirstName" />
+                <input asp-for="FirstName" type="text" required />
                 <span asp-validation-for="FirstName" class="error"></span>
+                <span id="FirstNameError" class="error"></span>
             </div>
 
             <div class="lastname form-group">
                 <label asp-for="LastName"></label>
-                <input asp-for="LastName" />
+                <input asp-for="LastName" type="text" required />
                 <span asp-validation-for="LastName" class="error"></span>
+                <span id="LastNameError" class="error"></span>
             </div>
 
             <div class="streetname form-group">
                 <label asp-for="StreetName"></label>
-                <input asp-for="StreetName" />
+                <input asp-for="StreetName" type="text" required />
                 <span asp-validation-for="StreetName" class="error"></span>
+                <span id="StreetNameError" class="error"></span>
             </div>
 
             <div class="postalcode form-group">
                 <label asp-for="PostalCode"></label>
-                <input asp-for="PostalCode" />
+                <input asp-for="PostalCode" type="text" required />
                 <span asp-validation-for="PostalCode" class="error"></span>
+                <span id="PostalCodeError" class="error"></span>
             </div>
 
             <div class="city form-group">
                 <label asp-for="City"></label>
-                <input asp-for="City" />
+                <input asp-for="City" type="text" required />
                 <span asp-validation-for="City" class="error"></span>
+                <span id="CityError" class="error"></span>
             </div>
 
             <div class="mobile form-group">
@@ -56,20 +60,23 @@
 
             <div class="email form-group">
                 <label asp-for="Email"></label>
-                <input asp-for="Email" />
+                <input asp-for="Email" type="text" required />
                 <span asp-validation-for="Email" class="error"></span>
+                <span id="EmailError" class="error"></span>
             </div>
 
             <div class="password form-group">
                 <label asp-for="Password">Password</label>
-                <input asp-for="Password" />
+                <input asp-for="Password" type="password" required />
                 <span asp-validation-for="Password" class="error"></span>
+                <span id="PasswordError" class="error"></span>
             </div>
 
             <div class="confirmpassword form-group">
                 <label asp-for="ConfirmPassword">Confirm Password</label>
-                <input asp-for="ConfirmPassword" />
+                <input asp-for="ConfirmPassword" type="password" required />
                 <span asp-validation-for="ConfirmPassword" class="error"></span>
+                <span id="ConfirmPasswordError" class="error"></span>
             </div>
 
             <div class="profileimage form-group">
