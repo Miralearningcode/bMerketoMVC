@@ -1115,6 +1115,10 @@ footer .container {
   color: #FA3150;
 }
 
+.users {
+  padding-top: 500px;
+  color: palevioletred;
+}
 .test {
   color: deeppink;
   background-color: deeppink;

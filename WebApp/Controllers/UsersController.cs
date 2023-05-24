@@ -47,7 +47,7 @@ namespace WebApp.Controllers
                 userRoles.Add(userRole);
             }
 
-            return View(userRoles);
+            return View((userRoles, _userManager));
         }
     }
 }
