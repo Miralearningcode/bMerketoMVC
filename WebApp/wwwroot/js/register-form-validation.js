@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var passwordInput = document.getElementById("Password");
     var confirmPasswordInput = document.getElementById("ConfirmPassword");
 
-    //error
     var firstNameError = document.getElementById("FirstNameError");
     var lastNameError = document.getElementById("LastNameError");
     var streetNameError = document.getElementById("StreetNameError");

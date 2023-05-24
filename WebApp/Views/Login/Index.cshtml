@@ -9,7 +9,6 @@
         <div class="title">@ViewData["Title"]</div>
 
         <form method="post" novalidate asp-route-ReturnUrl="@Model.ReturnUrl">
-
             <div asp-validation-summary="ModelOnly" class="form-group error"></div>
 
             <div class="email form-group">
@@ -19,11 +18,13 @@
                 </label>
                 <input asp-for="Email"/>
                 <span asp-validation-for="Email" class="error"></span>
+                <span id="EmailError" class="error"></span>
             </div>
             <div class="password form-group">
                 <label asp-for="Password">Password *</label>
                 <input asp-for="Password" />
                 <span asp-validation-for="Password" class="error"></span>
+                <span id="PasswordError" class="error"></span>
             </div>
             <div class="rememberme form-checkbox-group">
                 <label class="custom-checkbox">

@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var nameInput = document.getElementById("Name");
     var emailInput = document.getElementById("Email");
     var messageInput = document.getElementById("MessageText");
+
     var emailError = document.getElementById("EmailError");
     var nameError = document.getElementById("NameError");     
     var messageError = document.getElementById("MessageError");    
-
 
     nameInput.addEventListener("input", validateName);
     emailInput.addEventListener("input", validateEmail);
