@@ -41,13 +41,7 @@ namespace WebApp.Controllers
             return View(viewModel);
         }
 
-        //Ta bort search, samt search view?
-        public IActionResult Search()
-        {
-            ViewData["Title"] = "Search for products";
-            return View();
-        }
-
+    
         public async Task<IActionResult> Details(string id)
         {
             var product = await _productService.GetAsync(id);

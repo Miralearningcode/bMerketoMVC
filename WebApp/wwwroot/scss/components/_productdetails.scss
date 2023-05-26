@@ -1,4 +1,38 @@
-.test {
-    color: deeppink;
-    background-color: deeppink;
+.image {
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-bottom: 150px;
+        color: $color-dark-2;
+
+        img {
+            width: 400px;
+            height: auto;
+        }
+
+        .productdetails {
+
+            .name {
+                font-size: 24px;
+                font-family: $font-poppins;
+                font-weight: $font-weight-medium;
+            }
+
+            .description {
+                border-bottom: 1px solid $color-light-grey;
+                width: 70%;
+                font-size: 16px;
+            }
+
+            .star-rating {
+                color: $color-yellow;
+            }
+
+            .price {
+                font-size: 24px;
+                font-weight: $font-weight-semibold;
+            }
+        }
+    }
 }

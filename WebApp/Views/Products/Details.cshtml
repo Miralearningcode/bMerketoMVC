@@ -1,9 +1,5 @@
 ﻿@model ProductDetailsViewModel
 
-@section scripts {
-    <script src="~/js/form-validation.js" defer></script>
-}
-
 
 <section class="breadcrumb">
     <div class="container">
@@ -18,24 +14,26 @@
     </div>
 </section>
 
-<h2>@Model.Name</h2>
-<p>Article Number: @Model.ArticleNumber</p>
-<p>Price: @Model.Price</p>
-<img src="images/products/@Model.ImageUrl" alt="@Model.Name">
+<section class="image">
+    <div class="container">
+        <img src="images/products/@Model.ImageUrl" alt="@Model.Name">
+        <section class="productdetails">
+            <div class="name">@Model.Name</div>
+            <div class="description">@Model.Description</div>
+                <p class="star-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i> 
+                </p>
+            <div class="price">@Model.Price$</div>
+        </section>
+    </div>
+</section>
 
-<!-- Add additional HTML code for displaying other product details -->
-<!-- Access the All property if needed -->
-@if (Model.All != null)
-{
-    <!-- Add code to display the grid items -->
-    @foreach (var item in Model.All.GridItems)
-    {
-        <div>
-            <p>@item.Name</p>
-            <!-- Add code to display other properties of the grid item -->
-        </div>
-    }
-}
-<div class="test">HEJSAN</div>
+
+
+
 
 

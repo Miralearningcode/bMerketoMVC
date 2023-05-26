@@ -3,7 +3,7 @@
     public class Product
     {
         public string ArticleNumber { get; set; } = null!;
-        public string Name { get; set; } = null!; //Eller ProductName som det var tidigare?
+        public string Name { get; set; } = null!; 
         public string? Description { get; set; }
         public int Price { get; set; }
         public string? ImageUrl { get; set; }

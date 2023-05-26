@@ -1116,10 +1116,33 @@ footer .container {
 }
 
 .users {
-  padding-top: 500px;
-  color: palevioletred;
+  padding-top: 150px;
 }
-.test {
-  color: deeppink;
-  background-color: deeppink;
+
+.image .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 150px;
+  color: #292929;
+}
+.image .container img {
+  width: 400px;
+  height: auto;
+}
+.image .container .productdetails .name {
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.image .container .productdetails .description {
+  border-bottom: 1px solid #ECEBEB;
+  width: 70%;
+  font-size: 16px;
+}
+.image .container .productdetails .star-rating {
+  color: #F9C936;
+}
+.image .container .productdetails .price {
+  font-size: 24px;
+  font-weight: 600;
 }
